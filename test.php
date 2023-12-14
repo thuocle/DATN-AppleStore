@@ -1,39 +1,16 @@
-<?php session_start();
-if(isset($_SESSION['cart']))
-{
-$temp = rand(1,10000000);
-include('./config/db.php');
-$tongtien = 0;
-foreach($_SESSION['cart'] as $item)
-{
-    $sl = $item['sl'];
-    $dongia = $item['gia'];
-    $tongtien += $sl * $dongia;
-}
-// $ggname = $_SESSION['user'];
-// $sql = "SELECT * FROM google_users WHERE google_name ='$ggname'";
-// Lưu thông tin đơn hàng vào session
-$_SESSION['order_info'] = [
-    'name' => $_POST['name'],
-    'address' => $_POST['address'],
-    'phone' => $_POST['phone'],
-    'email' => $_POST['email'],
-    // Các thông tin khác của đơn hàng
-];
-
-
+<?php
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-$vnp_Returnurl = "http://localhost/apple-store/thanhtoan.php";
-$vnp_TmnCode = "2TDGTBXA";//Mã website tại VNPAY 
-$vnp_HashSecret = "FJSJJNFEYHCLXBLKIFFKHFYGKGVKWNID"; //Chuỗi bí mật
+$vnp_Returnurl = "http://localhost/mobile-shop/test.php";
+$vnp_TmnCode = "EF91QS1M";//Mã website tại VNPAY 
+$vnp_HashSecret = "OXYCSTEKNDYDXGBKAWSEDUPYDEARGKSI"; //Chuỗi bí mật
 
-$vnp_TxnRef = "DH".$temp; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-$vnp_OrderInfo = "Thanh toán hóa đơn";
+$vnp_TxnRef = "DH100"; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+$vnp_OrderInfo = "Test thanh toán";
 $vnp_OrderType = "billpayment";
-$vnp_Amount = $tongtien * 100;
+$vnp_Amount = 2000000 * 100;
 $vnp_Locale = "vn";
 $vnp_BankCode = "";
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -88,11 +65,4 @@ $returnData = array('code' => '00'
     } else {
         echo json_encode($returnData);
     }
-}
-else{
-    $_SESSION['mess'] = "Giỏ hàng trống vui lòng thêm sản phẩm";
-    header(('Location:../apple-store/products.php'));
-  }
-
-
-?>
+	// vui lòng tham khảo thêm tại code demo
