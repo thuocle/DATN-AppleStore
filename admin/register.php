@@ -21,13 +21,12 @@
             $name = $_POST['hoten'];
             $email = $_POST['email'];
             $adress = $_POST['diachi'];
-            if(empty($user) || empty($pass) || empty($name) || empty($email) || empty($adress)) {
-                echo "<script>if(confirm('Vui lòng nhập đầy đủ thông tin!')){window.location.href='../admin/register.php'};</script>";
-            }
+            
             $sql = "INSERT INTO `users`(`TenDangNhap`, `MatKhau`, `Email`, `HoTen`, `DiaChi`, `Quyen`) VALUES ('$user','$pass','$email','$name', '$adress',0)";
             if(mysqli_query($link,$sql)) {
                 echo "<script>if(confirm('Đăng ký thành công! Mời bạn đăng nhập để trải nghiệm mua sắm!')){window.location.href='../Login/GoogleLogin.php'};</script>";
-                // exit(); // kết thúc kịch bản PHP để đảm bảo không có mã nào được thực thi sau khi chuyển hướng
+                include('./sendmail.php');
+                sendmail($email, $user, $name);
             } else {
                 echo "<script type='text/javascript'>alert('Vui lòng thử lại');</script>";
             }

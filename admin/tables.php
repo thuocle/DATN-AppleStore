@@ -22,7 +22,7 @@
                 </ol>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <a href="addsp.php" class="btn btn-primary">Thêm sản phẩm</a>
+                        <a href="addsp.php" class="btn btn-success">Thêm sản phẩm</a>
                     </div>
                 </div>
                 <div class="card mb-4">
@@ -72,7 +72,7 @@
                                         <td><?= $row['PhuKien'] ?>
                                         <td style="text-align: center;">
                                             <a href="addsp.php?id=<?php echo $row['MaSanPham'] ?>"
-                                                class="btn btn-primary">Sửa</a>
+                                                class="btn btn-success">Sửa</a>
                                         </td>
                                         <td style="text-align: center;">
                                             <a href="xuly.php?idxoa=<?php echo $row['MaSanPham']; ?>"
