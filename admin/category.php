@@ -10,20 +10,20 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Danh sách loại sản phẩm</h1>
+                <h1 class="mt-4">Danh sách các thương hiệu</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Danh mục sản phẩm</li>
+                    <li class="breadcrumb-item active">Danh sách các thương hiệu</li>
                 </ol>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <a href="addloaisp.php" class="btn btn-primary">Thêm danh mục mới</a>
+                        <a href="addloaisp.php" class="btn btn-primary">Thêm thương hiệu điện thoại mới</a>
                     </div>
                 </div>
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Thông tin tất cả các loại sản phẩm
+                        Thông tin tất cả các thương hiệu
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,8 +31,8 @@
                                 cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Mã loại sản phẩm</th>
-                                        <th>Tên loại sản phẩm</th>
+                                        <th>Mã thương hiệu</th>
+                                        <th>Tên thương hiệu</th>
                                         <th>Giới thiệu</th>
                                         <th></th>
                                         <th></th>

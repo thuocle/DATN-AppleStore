@@ -6,6 +6,9 @@
         td, th {
             min-width: 150px;
         }
+        .almost-out-of-stock {
+        font-weight: bold;
+    }
     </style>
     <?php include("../admin/assets/title.php");?>
 </head>
@@ -53,6 +56,7 @@
               $sql = "SELECT * FROM loaisp join sanpham on loaisp.MaLoaiSP = sanpham.MaLoaiSP join optionproduct on sanpham.MaSanPham = optionproduct.MaSanPham ORDER by optionproduct.OPID";
               if ($result = mysqli_query($link, $sql)) {
                 while ($row = mysqli_fetch_array($result)) {
+                    $sl = $row['SoLuong'];
               ?>
                                     <tr>
                                         <td><?= $row['OPID'] ?>
@@ -60,11 +64,19 @@
                                         <td><?= $row['TenLoaiSP'] ?>
                                         <td><?= $row['MauSac'] ?>
                                         <td><?= $row['BoNho'] ?>
-                                        <td><?= $row['SoLuong'] ?>
+                                        <td style="color:<?= $sl < 10 ? 'red' : 'black'; ?>">
+                                        <?= $row['SoLuong'] ?>
+                                            <?php if ($sl < 10) { echo " - Sắp hết hàng"; } ?>
+                                        </td>
+
                                         <td><?= $row['Gia'] ?>
                                         <td style="text-align: center;">
                                             <a href="addwarehouse.php?id=<?php echo $row['OPID'] ?>"
-                                                class="btn btn-primary">Sửa</a>
+                                                class="btn btn-success">Sửa</a>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <a href="importwarehouse.php?id=<?php echo $row['OPID'] ?>"
+                                                class="btn btn-success">Nhập thêm</a>
                                         </td>
                                         <td style="text-align: center;">
                                             <a href="xulywarehouse.php?idxoa=<?php echo $row['OPID']; ?>"

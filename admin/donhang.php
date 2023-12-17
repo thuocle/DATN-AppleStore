@@ -96,6 +96,7 @@
                                 <thead>
                                     <tr>
                                         <th>Mã đơn hàng</th>
+                                        <th>Xuất hóa đơn</th>
                                         <th style="min-width:100px">Ngày lập</th>
                                         <th>Tên khách hàng</th>
                                         <th>Số điện thoại</th>
@@ -128,6 +129,11 @@
                                     ?>
                                     <tr class="<?php echo $class ?>">
                                         <td><a href="detaildh.php?id=<?=$row['MaDonHang'] ?>"><?=$row['MaDonHang'] ?></a></td>
+                                        <?php if($row['trangthai_id'] == 4){ ?>
+                        <td><a href="../PrintInvoice.php?id=<?php echo $row['MaDonHang']?>">Xuất hóa đơn</a></td>
+                        <?php } else { ?>
+                        <td></td>
+                        <?php } ?>
                                         <td><?php echo $row['Ngay'] ?></td>
                                         <td><?php echo $row['TenKhachHang'] ?></td>
                                         <td><?php echo $row['SDT'] ?></td>

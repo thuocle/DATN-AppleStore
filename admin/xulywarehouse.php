@@ -1,5 +1,6 @@
 <?php
     include('../config/db.php');
+    //them
     if(isset($_POST['submit'])) {
     $masp = $_POST['masp'];
     $version = $_POST['version'];
@@ -15,6 +16,7 @@
                     echo "Error: " . $sql1 . "<br>" . mysqli_error($link);
               }
     }
+    //sua
     if(isset($_POST['sua']))
     {
     $masp = $_POST['masp'];
@@ -31,6 +33,7 @@
                     echo "Error: " . $sq . "<br>" . mysqli_error($link);
               }
     }
+    //xóa
         if(isset($_GET['idxoa']))
 {
     $xoa = $_GET['idxoa'];
@@ -43,4 +46,24 @@
         header('Location: ../admin/warehouse.php');
     }
 }
+
+//nhap hang them vao kho
+if(isset($_POST['nhap']))
+    {
+    $masp = $_POST['masp'];
+    $qtty = $_POST['qtty'];
+                $opid = $_POST['opid'];
+                $sql2 = "SELECT SoLuong FROM optionproduct where OPID = '$opid'";
+                if ($result2 = mysqli_query($link, $sql2)){
+                    if ($row2 = mysqli_fetch_array($result2)) {
+                    $oldqtty = $row2['SoLuong'];
+                }}
+                $sq = "UPDATE optionproduct SET SoLuong = '$oldqtty'+'$qtty' WHERE OPID = '$opid'";                
+                if (mysqli_query($link, $sq)) {
+                    echo "<script type='text/javascript'>alert('Nhập thêm sản phẩm thành công');</script>";
+                    header(('Location:../admin/warehouse.php'));
+              } else {
+                    echo "Error: " . $sq . "<br>" . mysqli_error($link);
+              }
+    }
 ?>

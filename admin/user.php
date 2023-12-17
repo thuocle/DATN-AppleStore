@@ -30,7 +30,6 @@
                             <thead>
                                 <tr>
                                     <th>Tên đăng nhập</th>
-                                    <th>Mật khẩu</th>
                                     <th>Email</th>
                                     <th>Họ tên</th>
                                     <th>Số điện thoại</th>
@@ -51,7 +50,6 @@
                         ?>
                                 <tr <?php if ($i % 2 == 0) echo 'class="table-secondary"'; ?>>
                                     <td><?php echo $row['TenDangNhap'] ?></td>
-                                    <td><?php echo $row['MatKhau'] ?></td>
                                     <td><?php echo $row['Email'] ?></td>
                                     <td><?php echo $row['HoTen'] ?></td>
                                     <td><?php echo $row['SDT'] ?></td>
