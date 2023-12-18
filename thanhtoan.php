@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['cart'])) {
+  ob_start(); 
   if (isset($_GET['vnp_ResponseCode']) && $_GET['vnp_ResponseCode'] == "00") {
     include('./config/db.php');
     $tongtien = $_GET['vnp_Amount'] / 100;
@@ -51,7 +52,7 @@ if (isset($_SESSION['cart'])) {
               echo "Lỗi cập nhật: " . $link->error;
           }
         }
-        include('./sendmailafterorder.php');
+        include('sendmailafterorder.php');
         sendmail($email, $name,$madh, $tongtien, $address, $phone);
         unset($_SESSION['cart']);
         unset($_SESSION['order_info']);
@@ -98,7 +99,7 @@ if (isset($_SESSION['cart'])) {
               echo "Lỗi cập nhật: " . $link->error;
           }
         }
-        include('./sendmailafterorder.php');
+        include('sendmailafterorder.php');
         sendmail($email, $name,$madh, $tongtien, $address, $phone);
         unset($_SESSION['cart']);
         unset($_SESSION['order_info']);
@@ -139,7 +140,7 @@ if (isset($_SESSION['cart'])) {
               echo "Lỗi cập nhật: " . $link->error;
           }
         }
-        include('./sendmailafterorder.php');
+        include('sendmailafterorder.php');
         sendmail2($email, $name,$madh, $tongtien, $address, $phone);
         unset($_SESSION['cart']);
         unset($_SESSION['order_info']);
@@ -148,5 +149,6 @@ if (isset($_SESSION['cart'])) {
        }
   }
   }
+  ob_end_flush();
 }
 ?>

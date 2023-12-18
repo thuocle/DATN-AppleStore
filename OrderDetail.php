@@ -69,7 +69,6 @@
     </style>
 </head>
 <?php include("header.php"); //session_start()
- include("tittle.php");
 ?>
 
 <body>

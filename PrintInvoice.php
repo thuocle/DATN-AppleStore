@@ -95,23 +95,29 @@
             if (mysqli_num_rows($result) > 0) {
                 // In hóa đơn
                 $row = mysqli_fetch_assoc($result);
+                $hoten =$row['HoTen'];
         ?>
         <div class="invoice p-3 my-5 shadow">
         <div class="d-flex justify-content-between align-items-center text-center">
-          <h1 class="h3 font-weight-bold mb-0">HÓA ĐƠN</h1>
+          <h1 style="padding-left:400px;" class="h3 font-weight-bold mb-0">HÓA ĐƠN</h1>
   <button class="btn btn-success d-print-none font-weight-bold" onclick="window.print()">IN HÓA ĐƠN</button>
 </div>
 <hr class="my-4">
 <div class="row">
-  <div class="col-md-6">
+<div class="col-md-4">
+    <p class="font-weight-bold mb-0">Công ty cổ phần BFD</p>
+    <p class="font-weight-bold mb-0">Địa chỉ: </p>
+    <p>Số nhà 26 ngõ 60 đường 422B, Xã Vân Canh, Huyện Hoài Đức, Thành phố Hà Nội.</p>
+  </div>
+  <div class="col-md-4">
     <p class="font-weight-bold mb-0">Mã đơn hàng:</p>
     <p><?php echo $row['MaDonHang']; ?></p>
     <p class="font-weight-bold mb-0">Ngày đặt hàng:</p>
     <p><?= $row['Ngay']=date('d/m/Y'); ?></p>
-    <p class="font-weight-bold mb-0">Ghi chú:</p>
+    <p class="font-weight-bold mb-0">Hình thức thanh toán:</p>
     <p><?php echo $row['GhiChu']; ?></p>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
   <p class="font-weight-bold mb-0">Tên khách hàng:</p>
     <p><?php echo $row['HoTen']; ?></p>
     <p class="font-weight-bold mb-0">Địa chỉ giao hàng:</p>
@@ -152,6 +158,13 @@
                     </tr>
                 </tfoot>
             </table>
+            <div style="float:right;margin-top:30px;"><i><p style="text-align: end;font-weight:bold;"><?php echo "Hà Nội, ngày " . date('d') . " tháng " . date('m') . " năm " . date('Y'); ?></p></i>
+                <span>Khách hàng</span>
+                <br>
+                <br>
+                <br>
+                <span><?= $hoten ?></span>
+          </div>
         </div>
         <?php
             } 

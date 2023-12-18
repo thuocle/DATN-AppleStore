@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer-master/PHPMailer-master/src/Exception.php';
-require 'PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/PHPMailer-master/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 // Tạo nội dung email
 function sendmail2($email, $name, $orderid, $tongtien, $address, $phone){
 $message = '<html><body>';
@@ -51,10 +51,10 @@ $mail->addAddress($email);
 $mail->Subject .=   $tit;
 $mail->msgHTML($message);
 
-//if (!$mail->send()) {
-    //echo 'Mailer Error: '.$mail->ErrorInfo;
-//} else {
-    //echo 'The email message was sent.';
-//}
+if (!$mail->send()) {
+    echo 'Mailer Error: '.$mail->ErrorInfo;
+} else {
+    echo 'The email message was sent.';
+}
 }
 ?>
